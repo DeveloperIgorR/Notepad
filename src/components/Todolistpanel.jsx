@@ -1,7 +1,9 @@
 import { useState } from "react"
 const Todopanel = () => {
+    
     const [tasks, setTasks] = useState([])
     const [taskText, setTaskText] = useState('')
+    
     let onButtonClick = () => {
         setTasks([...tasks,taskText])
     }
