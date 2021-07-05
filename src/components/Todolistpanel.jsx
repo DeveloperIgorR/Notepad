@@ -3,7 +3,9 @@ const Todopanel = () => {
     
     const [tasks, setTasks] = useState([])
     const [taskText, setTaskText] = useState('')
-    
+    const newTask = {
+        id:1,Title:taskText
+    }
     let onButtonClick = () => {
         setTasks([...tasks,taskText])
     }
