@@ -9,6 +9,11 @@ const Todopanel = () => {
         }
         setTasks([...tasks, newTask])
         setTaskText('')
+    } 
+
+    let onButtonDelClick = (task )=> {
+        let filtredTasks = tasks.filter(item => item.id != task.id)
+        setTasks(filtredTasks)
     }
 
     let onTextChange = ({ target: { value } }) => {
@@ -18,7 +23,7 @@ const Todopanel = () => {
 
     let toDoListTasks = tasks.map(task => <li>
         <div>
-            <span>{task.title}</span><button>Delete Task</button>
+            <span>{task.title}</span><button onClick={()=>onButtonDelClick(task)}>Delete Task</button>
         </div>
     </li>)
 
