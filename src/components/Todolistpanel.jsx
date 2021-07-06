@@ -2,22 +2,26 @@ import { useState } from "react"
 const Todopanel = () => {
     const [tasks, setTasks] = useState([])
     const [taskText, setTaskText] = useState('')
-   
-    let onButtonClick = ({ target: { value } }) => {
+
+    let onButtonClick = () => {
         const newTask = {
-            id:Date.now(),title:taskText
+            id: Date.now(), title: taskText
         }
-        setTasks([...tasks,newTask])
-        setTaskText(value='')
+        setTasks([...tasks, newTask])
+        setTaskText('')
     }
 
     let onTextChange = ({ target: { value } }) => {
         setTaskText(value)
-        
+
     }
-    
-    let toDoListTasks = tasks.map(tasks => <li>{tasks.title}</li>)
-    
+
+    let toDoListTasks = tasks.map(task => <li>
+        <div>
+            <span>{task.title}</span><button>Delete Task</button>
+        </div>
+    </li>)
+
     return (
         <div>
             <h1>ToDoList</h1>
