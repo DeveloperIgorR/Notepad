@@ -1,0 +1,15 @@
+.wrapper{
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 3fr 9fr;
+    grid-template-areas: 
+    'h h'
+    'n c';
+    grid-gap: 5px;
+}
+.wrapper{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
