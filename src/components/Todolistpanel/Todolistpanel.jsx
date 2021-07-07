@@ -29,7 +29,7 @@ const Todopanel = () => {
 
     return (
         <div>
-            <h1>ToDoList</h1>
+            <h2>ToDoList</h2>
             <div>
                 <div>
                     <ul>

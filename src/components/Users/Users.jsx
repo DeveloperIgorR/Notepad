@@ -1,5 +1,13 @@
 import { useState } from "react"
-const Users = () => {
+
+const Userslist = (props)=>{
+    return(
+      <div>
+          {props.usersList}
+      </div>
+    )
+}
+const Users = (props) => {
     const [users, SetUsers] = useState([])
     const [userName, SetUserName] = useState('')
     const [userLastName, SetUserLastName] = useState('')
@@ -31,10 +39,11 @@ const Users = () => {
             <span>{person.title}</span><button onClick={() => onDelButtonClick(person)}>Delete person</button>
         </div>
     </ol>)
+   
     return (
         <div>
             <div>
-                {usersList}
+              <Userslist usersList={usersList}/>
             </div>
             <div>
                 <input placeholder='Имя' onChange={onNameChange} value={userName} />
