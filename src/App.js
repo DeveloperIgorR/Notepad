@@ -10,7 +10,7 @@ const App = ()=> {
      <div className = 'wrapper' >
       <Header/>
       <Navbar/>
-      <div>
+      <div className ='wrapper-components'>
       <Route path='/Todolistpanel' render={() => <Todopanel/>}/>
       <Route path='/Users' render={() => <Users/>}/>
       </div>

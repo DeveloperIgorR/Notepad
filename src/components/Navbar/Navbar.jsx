@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
+import n from './Navbar.module.css'
 const Navbar = ()=> {
     return(
-        <div>
-         <div><NavLink to='/Todolistpanel'>Todopanel</NavLink> </div>
-         <div><NavLink to='/Users'>Users</NavLink></div>
+        <div className={n.navbar}>
+         <div><NavLink to='/Todolistpanel' activeClassName={n.active}>Todopanel</NavLink> </div>
+         <div><NavLink to='/Users' activeClassName={n.active}>Users</NavLink></div>
         </div>
     )
 }

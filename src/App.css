@@ -13,3 +13,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+.wrapper-components{
+    grid-area: c;
+    background-color: coral;
+}
