@@ -1,12 +1,5 @@
 import { useState } from "react"
-
-const Userslist = (props)=>{
-    return(
-      <div>
-          {props.usersList}
-      </div>
-    )
-}
+import Userslist from "./Userslist"
 const Users = (props) => {
     const [users, SetUsers] = useState([])
     const [userName, SetUserName] = useState('')

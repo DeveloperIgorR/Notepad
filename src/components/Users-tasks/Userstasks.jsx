@@ -1,10 +1,11 @@
+import Userslist from '../Users/Userslist'
 import u from './Userstasks.module.css'
-const Userstasks = (props)=>{
-    return(
+const Userstasks = (props) => {
+    return (
         <div className={u.userstasks}>
-            <h2>Users Tasks</h2>
+            <h2>UsersTasks</h2>
             <div>
-
+                <Userslist/>
             </div>
         </div>
     )

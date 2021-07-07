@@ -11,7 +11,7 @@ const App = ()=> {
      <div className = 'wrapper' >
       <Header/>
       <Navbar/>
-      <Userstasks/>
+      <Userstasks />
       <div className ='wrapper-components'>
       <Route path='/Todolistpanel' render={() => <Todopanel/>}/>
       <Route path='/Users' render={() => <Users/>}/>
