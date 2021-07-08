@@ -5,7 +5,7 @@ const Userstasks = (props) => {
         <div className={u.userstasks}>
             <h2>UsersTasks</h2>
             <div>
-                <Userslist/>
+                {/* <Userslist/> */}
             </div>
         </div>
     )
