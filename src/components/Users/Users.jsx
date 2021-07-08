@@ -1,42 +1,36 @@
 import { useState } from "react"
 import Userslist from "./Userslist"
 const Users = (props) => {
-    const [users, SetUsers] = useState([])
-    const [userName, SetUserName] = useState('')
-    const [userLastName, SetUserLastName] = useState('')
+    const [users, setUsers] = useState([])
+    const [userName, setUserName] = useState('')
+    const [userLastName, setUserLastName] = useState('')
 
     const onButtonClick = () => {
         const fullUserName = userName + userLastName
         const fullName = {
             id: Date.now(), title: fullUserName
         }
-        SetUsers([...users, fullName])
-        SetUserName('')
-        SetUserLastName('')
+        setUsers([...users, fullName])
+        setUserName('')
+        setUserLastName('')
     }
 
     const onDelButtonClick = (person) => {
         const newUser = users.filter(item => item.id != person.id)
-        SetUsers(newUser)
+        setUsers(newUser)
     }
 
     const onNameChange = ({ target: { value } }) => {
-        SetUserName(value)
+        setUserName(value)
     }
     const onLastNameChange = ({ target: { value } }) => {
-        SetUserLastName(value)
+        setUserLastName(value)
     }
 
-    let usersList = users.map(person => <ol>
-        <div>
-            <span>{person.title}</span><button onClick={() => onDelButtonClick(person)}>Delete person</button>
-        </div>
-    </ol>)
-   
     return (
         <div>
             <div>
-              <Userslist usersList={usersList}/>
+              <Userslist users={users} onDelButtonClick={onDelButtonClick} />
             </div>
             <div>
                 <input placeholder='Имя' onChange={onNameChange} value={userName} />
