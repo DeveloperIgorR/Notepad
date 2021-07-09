@@ -1,7 +1,7 @@
 import React from 'react'
-import { useState } from "react"
+import { useState } from 'react'
 import Usersdata from './Usersdata'
-import Userslist from "./Userslist"
+import Userslist from './Userslist'
 const Users = (props) => {
     const [users, setUsers] = useState([])
     // const [userName, setUserName] = useState('')

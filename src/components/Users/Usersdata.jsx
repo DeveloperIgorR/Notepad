@@ -1,24 +1,34 @@
 import React from 'react'
+import { useState } from 'react'
 const Usersdata = (props) => {
     const [userName, setUserName] = useState('')
     const [userLastName, setUserLastName] = useState('')
     
-    const onButtonClick = () => {
-      let usersProfile = ()=>{
-        const fullUserName = userName + userLastName
-        const fullName = {
-            id: Date.now(), title: fullUserName
-        }
+    // let onButtonClick = () => {
+    //   let usersProfile = ()=>{
+    //     const fullUserName = userName + userLastName
+    //     const fullName = {
+    //         id: Date.now(), title: fullUserName
+    //     }
+    // }
+    let onButtonClick = () => {
+        let usersProfile = ()=>{
+              const fullName = {
+              id: Date.now(), name: userName,lastName:userLastName
+          }
+      }
+      debugger
         console.log(usersProfile)
-    }  
-    const onNameChange = ({ target: { value } }) => {
+    } 
+
+    let onNameChange = ({ target: { value } }) => {
             setUserName(value)
         }
-    const onLastNameChange = ({ target: { value } }) => {
+    let onLastNameChange = ({ target: { value } }) => {
             setUserLastName(value)
         }
     
-    }
+    
     return (
         <div>
             <div>
