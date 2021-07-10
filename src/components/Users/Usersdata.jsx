@@ -9,6 +9,8 @@ const Usersdata = (props) => {
             id: Date.now(), name: userName, lastName: userLastName
         }
         props.addNewUser(usersProfile)
+        setUserName('')
+        setUserLastName('')
     }
 
     let onNameChange = ({ target: { value } }) => {
