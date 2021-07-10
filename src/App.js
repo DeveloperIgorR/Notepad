@@ -4,14 +4,14 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import './App.css'
 import Users from './components/Users/Users'
 import Navbar from './components/Navbar/Navbar'
-import Userstasks from './components/Users-tasks/Userstasks'
+import Usersposts from './components/Usersposts/Usersposts'
 const App = ()=> {
   return (
     <BrowserRouter>
      <div className = 'wrapper' >
       <Header/>
       <Navbar/>
-      <Userstasks />
+      <Usersposts />
       <div className ='wrapper-components'>
       <Route path='/Todolistpanel' render={() => <Todopanel/>}/>
       <Route path='/Users' render={() => <Users/>}/>
