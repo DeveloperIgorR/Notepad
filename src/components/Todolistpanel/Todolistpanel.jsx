@@ -4,11 +4,11 @@ const Todopanel = () => {
     const [tasks, setTasks] = useState([])
     const [taskText, setTaskText] = useState('')
     
-    const newTask = {
-        id: Date.now(), title: taskText,complited:false
-    }
+    
     let onButtonClick = () => {
-        
+        const newTask = {
+        id: Date.now(), title: taskText,completed:false
+    }
         setTasks([...tasks, newTask])
         setTaskText('')
     } 
@@ -22,15 +22,18 @@ const Todopanel = () => {
         setTaskText(value)
 
     }
-    let onFlagChange = ()=>{
-        <div className={s.checked}>
-            {newTask.title}
-        </div>
+    let onFlagChange = (event,item)=>{
+        let taskChecked = tasks.map(task=>
+            item.id===task.id
+            ?{...task,completed:!task.completed}
+            :item
+            )
+        setTasks(taskChecked)
     }
     let toDoListTasks = tasks.map(task => <li>
         <div>
             <span>{task.title}</span>
-            <input type='checkbox' id={task.id} onChange={onFlagChange}/>
+            <input type='checkbox' checked={completed} onChange={event=>onFlagChange(event)}/>
             <button onClick={()=>onButtonDelClick(task)}>Delete Task</button>
         </div>
     </li>)
