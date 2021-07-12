@@ -22,18 +22,18 @@ const Todopanel = () => {
         setTaskText(value)
 
     }
-    let onFlagChange = (event,item)=>{
-        let taskChecked = tasks.map(task=>
-            item.id===task.id
+    let onFlagChange = (event,task)=>{
+        let taskChecked = tasks.map(markedtask=>
+            markedtask.id===task.id
             ?{...task,completed:!task.completed}
-            :item
+            :markedtask
             )
         setTasks(taskChecked)
     }
     let toDoListTasks = tasks.map(task => <li>
         <div>
             <span>{task.title}</span>
-            <input type='checkbox' checked={completed} onChange={event=>onFlagChange(event)}/>
+            <input type='checkbox' checked={task.completed} onChange={event=>onFlagChange(event,task)}/>
             <button onClick={()=>onButtonDelClick(task)}>Delete Task</button>
         </div>
     </li>)
