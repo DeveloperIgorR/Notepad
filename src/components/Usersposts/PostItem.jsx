@@ -1,10 +1,12 @@
 import React from 'react'
 
 const PostItem = (props)=>{
-    debugger
-    return(
+      return(
         <div>
-            <span><p>{props.currentPost.data}</p><button onClick={() => props.delPost(currentPost)}>DelPost</button></span>
+            <span>
+                <p>{props.currentPost.data}</p>
+                <button onClick={() => props.delPost(props.currentPost)}>DelPost</button>
+            </span>
         </div>
     )
 }
