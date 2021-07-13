@@ -8,7 +8,7 @@ const Postpanel = (props) => {
     }
     let addPost = ()=>{
         let postElement = {
-            id:Date.now(),data:postText
+            id:Date.now(),data:postText,isHover:false
         }
         props.createPost(postElement)
         setPostText('')
