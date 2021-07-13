@@ -18,7 +18,7 @@ const Usersposts = () => {
         <div className={u.userposts}>
             <h2>UsersPosts</h2>
             <div>
-                <Post posts={posts} delPost={delPost}/>
+                <Post createPost={createPost} posts={posts} delPost={delPost}/>
             </div>
             <div>
                 <Postpanel createPost={createPost}/>

@@ -2,3 +2,10 @@
     grid-area: r;
     background-color:rgb(164, 190, 238);
 }
+.hovered{
+    color:brown;
+    font-size: large;
+}
+.unhovered{
+    color: rgb(12, 12, 12);
+}
