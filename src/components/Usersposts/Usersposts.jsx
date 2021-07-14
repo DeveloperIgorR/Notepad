@@ -10,9 +10,10 @@ const Usersposts = () => {
     const[postsSortedId,setSortedId] = useState([])
     
     let sortedOnTitle = ()=>{
-        let postsSortedTitle = [...posts].sort((a,b)=>a.title.localeCompare (b.title))
+        let postsSortedTitle = [...posts].sort((a,b)=>a.title.localeCompare(b.title))
         setSortedTitle(postsSortedTitle)
         setPosts(postsSortedTitle)
+        console.log(postsSortedTitle)
     }
 
     let sortedOnId = ()=>{
@@ -32,7 +33,7 @@ const Usersposts = () => {
     return (
         <div className={u.userposts}>
             <h2>UsersPosts</h2>
-            <select >
+            <select onChange={sortedOnTitle} onChange={sortedOnId}>
                 <option selected disabled>select type of sort</option>
                 <option onClick={sortedOnId} value='sortOnId'>sortOnId</option>
                 <option onClick={sortedOnTitle} value='sortOnTitle'>sortOnTitle</option>
