@@ -1,24 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './Usersposts.module.css'
 const PostItem = (props)=>{
+    const [hovered,setHovered] = useState(false)
     let onHover = ()=>{
-        let hoveredPost = {
-        ...props.currentPost,isHover:true
-        }
-        props.createPost(hoveredPost)
+        setHovered(true)
     }
     let offHover = ()=>{
-        let unhoveredPost = {
-        ...props.currentPost,isHover:false
-        }
-        props.createPost(unhoveredPost)
+        setHovered(false)
     }
 
       return(
         <div onMouseEnter={onHover} onMouseLeave={offHover}
-         className={props.currentPost.isHover==true?s.hovered:s.unhovered}>
+         className={hovered==true?s.hovered:s.unhovered}>
             <span>
-                <p>{props.currentPost.data}</p>
+                <p>{props.currentPost.title}</p>
                 <button onClick={() => props.delPost(props.currentPost)}>DelPost</button>
             </span>
         </div>
