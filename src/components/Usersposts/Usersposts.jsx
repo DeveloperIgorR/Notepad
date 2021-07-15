@@ -36,7 +36,10 @@ const Usersposts = () => {
          let filtredPost = posts.filter(item=>item.id!=currentPost.id)
          setPosts(filtredPost) 
     }
-   
+    let sortOptions = [
+        {value:'sortOnId',name:'сортировка по ID'},
+        {value:'sortOnTitle',name:'сортировка по названию'}
+    ]
     return (
         <div className={u.userposts}>
             <h2>UsersPosts</h2>
