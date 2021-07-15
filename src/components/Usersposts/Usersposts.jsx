@@ -40,13 +40,15 @@ const Usersposts = () => {
         {value:'sortOnId',name:'сортировка по ID'},
         {value:'sortOnTitle',name:'сортировка по названию'}
     ]
+    let optionList = sortOptions.map((option)=>{
+        <option value={option.value}>{option.name}</option>
+    })
     return (
         <div className={u.userposts}>
             <h2>UsersPosts</h2>
             <select onChange={sortByEvent}>
                 <option selected disabled>select type of sort</option>
-                <option  value='sortOnId'>sortOnId</option>
-                <option value='sortOnTitle'>sortOnTitle</option>
+                {optionList}
             </select>
             <div>
                 <Post createPost={createPost} posts={posts} delPost={delPost}/>
