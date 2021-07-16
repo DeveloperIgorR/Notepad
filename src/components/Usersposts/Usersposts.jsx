@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Post from './Post'
 import Postpanel from './Postpanel'
@@ -8,6 +8,7 @@ import u from './Usersposts.module.css'
 const Usersposts = () => {
     const[posts,setPosts] = useState([])
     const[postsSorted,setSorted] = useState([])
+    useEffect(getPosts,[])
        
     let sortByEvent = (event)=>{
        const field = event.target.value
@@ -30,9 +31,14 @@ const Usersposts = () => {
     let optionList = sortOptions.map((option)=>{
         return<option value={option.value}>{option.name}</option>
     })
-    let getPosts = ()=>{
-        return axios.get('https://jsonplaceholder.typicode.com/posts').then(respons=>console.log(respons))
+    const instance = axios.create({
+        withCredentials: true,
+        baseURL: 'https://jsonplaceholder.typicode.com/'
+    })
+    function getPosts(){
+        return instance.get('posts/').then(respons=>setPosts(respons.data))
     }
+    
     return (
         <div className={u.userposts}>
             <h2>UsersPosts</h2>

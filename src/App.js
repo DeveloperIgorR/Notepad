@@ -5,6 +5,7 @@ import './App.css'
 import Users from './components/Users/Users'
 import Navbar from './components/Navbar/Navbar'
 import Usersposts from './components/Usersposts/Usersposts'
+import SinglePostPage from './components/SinglePostPage/SinglePostPage'
 const App = ()=> {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const App = ()=> {
       <div className ='wrapper-components'>
       <Route path='/Todolistpanel' render={() => <Todopanel/>}/>
       <Route path='/Users' render={() => <Users/>}/>
+      <Route path='/SinglePostPage' render={() => <SinglePostPage/>}/>
       </div>
      </div>
     </BrowserRouter>
