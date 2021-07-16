@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import Post from './Post'
@@ -6,28 +7,14 @@ import u from './Usersposts.module.css'
 
 const Usersposts = () => {
     const[posts,setPosts] = useState([])
-    const[postsSortedTitle,setSortedTitle] = useState([])
-    const[postsSortedId,setSortedId] = useState([])
-    
-    let sortedOnTitle = (event)=>{
-        let postsSortedTitle = [...posts].sort((a,b)=>a.title.localeCompare(b.title))
-        setSortedTitle(postsSortedTitle)
-        setPosts(postsSortedTitle)
-        
-    }
-
-    let sortedOnId = (event)=>{
-        let postsSortedId = [...posts].sort((a,b)=>a.id-b.id)
-        setSortedId(postsSortedId)
-        setPosts(postsSortedId)
-    }
-    
+    const[postsSorted,setSorted] = useState([])
+       
     let sortByEvent = (event)=>{
-       if(event.target.value=='sortOnId'){
-        sortedOnId(event)
-       }else if(event.target.value=='sortOnTitle'){
-        sortedOnTitle(event)  
-       }
+       const field = event.target.value
+       let postsSorted = [...posts].sort((a,b)=>String(a[field]).localeCompare(b[field]))
+        setSorted(postsSorted)
+        setPosts(postsSorted)
+       
     }
     let createPost = (postElement)=>{
         setPosts([...posts,postElement])
@@ -37,12 +24,15 @@ const Usersposts = () => {
          setPosts(filtredPost) 
     }
     let sortOptions = [
-        {value:'sortOnId',name:'сортировка по ID'},
-        {value:'sortOnTitle',name:'сортировка по названию'}
+        {value:'id',name:'сортировка по ID'},
+        {value:'title',name:'сортировка по названию'}
     ]
     let optionList = sortOptions.map((option)=>{
-        <option value={option.value}>{option.name}</option>
+        return<option value={option.value}>{option.name}</option>
     })
+    let getPosts = ()=>{
+        return axios.get('https://jsonplaceholder.typicode.com/posts').then(respons=>console.log(respons))
+    }
     return (
         <div className={u.userposts}>
             <h2>UsersPosts</h2>
@@ -55,6 +45,7 @@ const Usersposts = () => {
             </div>
             <div>
                 <Postpanel createPost={createPost}/>
+                <button onClick={getPosts}>get Posts</button>
             </div>
         </div>
     )
