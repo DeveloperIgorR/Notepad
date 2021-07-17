@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-const Postpanel = (props) => {
+const PostForm = (props) => {
     const[postText,setPostText] = useState('')
     
     let collectPost = ({target:{value}})=>{
@@ -20,4 +20,4 @@ const Postpanel = (props) => {
         </div>
     )
 }
-export default Postpanel
+export default PostForm

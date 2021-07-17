@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Post from './Post'
-import Postpanel from './Postpanel'
+import PostForm from './PostForm'
 
 const PostPage = () => {
     const[posts,setPosts] = useState([])
@@ -49,7 +49,7 @@ const PostPage = () => {
                 <Post createPost={createPost} posts={posts} delPost={delPost}/>
             </div>
             <div>
-                <Postpanel createPost={createPost}/>
+                <PostForm createPost={createPost}/>
                 <button onClick={getPosts}>get Posts</button>
             </div>
         </div>
