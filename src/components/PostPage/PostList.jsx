@@ -1,7 +1,7 @@
 import React from 'react'
 import PostItem from './PostItem'
 
-const Post = (props) => {
+const PostList = (props) => {
     
     return (
         <div>
@@ -12,4 +12,4 @@ const Post = (props) => {
     )
 }
 
-export default Post
+export default PostList

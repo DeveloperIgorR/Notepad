@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import Post from './Post'
+import PostList from './PostList'
 import PostForm from './PostForm'
 
 const PostPage = () => {
@@ -46,7 +46,7 @@ const PostPage = () => {
                 {optionList}
             </select>
             <div>
-                <Post createPost={createPost} posts={posts} delPost={delPost}/>
+                <PostList createPost={createPost} posts={posts} delPost={delPost}/>
             </div>
             <div>
                 <PostForm createPost={createPost}/>
