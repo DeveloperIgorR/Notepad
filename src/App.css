@@ -17,3 +17,7 @@
     grid-area: c;
     background-color: coral;
 }
+.wrapper-post-components{
+    grid-area: r;
+    background-color:rgb(164, 190, 238);
+}

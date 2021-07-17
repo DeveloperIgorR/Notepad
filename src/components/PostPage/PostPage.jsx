@@ -3,9 +3,8 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Post from './Post'
 import Postpanel from './Postpanel'
-import u from './Usersposts.module.css'
 
-const Usersposts = () => {
+const PostPage = () => {
     const[posts,setPosts] = useState([])
     const[postsSorted,setSorted] = useState([])
     useEffect(getPosts,[])
@@ -40,7 +39,7 @@ const Usersposts = () => {
     }
     
     return (
-        <div className={u.userposts}>
+        <div >
             <h2>UsersPosts</h2>
             <select onChange={sortByEvent}>
                 <option selected disabled>select type of sort</option>
@@ -56,4 +55,4 @@ const Usersposts = () => {
         </div>
     )
 }
-export default Usersposts
+export default PostPage
