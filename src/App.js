@@ -14,7 +14,7 @@ const App = ()=> {
       <Navbar/>
       <div className ='wrapper-post-components' >
         <Route path='/PostPage' render={() => <PostPage/>}/>
-        <Route path={'posts/:id'} render={() => <SinglePostPage/>}/>
+        <Route path={'/posts/:id'} render={() => <SinglePostPage/>}/>
       </div>
       <div className ='wrapper-components'>
       <Route path='/Todolistpanel' render={() => <Todopanel/>}/>
