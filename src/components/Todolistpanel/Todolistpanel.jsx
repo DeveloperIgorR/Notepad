@@ -18,8 +18,8 @@ const Todopanel = () => {
         setTasks(filtredTasks)
     }
 
-    let onTextChange = ({ target: { value } }) => {
-        setTaskText(value)
+    let onTextChange = (event) => {
+        setTaskText(event.target.value)
 
     }
     let onFlagChange = (event,task)=>{
@@ -37,21 +37,10 @@ const Todopanel = () => {
             <button onClick={()=>onButtonDelClick(task)}>Delete Task</button>
         </div>
     </li>)
-    // const[counter,setCounter] = useState(0)
     
-    // let onButPlusclick = ()=>{
-              
-    //     setCounter(counter+1)
-    // }
-    
-    // let onButMinusClick = ()=>{
-        
-    //     setCounter(counter-1)
-    // }
     return (
         <div>
-            {/* <h1>{counter}</h1>
-            <button onClick={onButPlusclick}>+</button> <button onClick={onButMinusClick}>-</button>     */}
+            
             <h2>ToDoList</h2>
             <div>
                 <div>
