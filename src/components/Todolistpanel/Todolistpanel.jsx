@@ -1,16 +1,16 @@
 import { useState } from "react"
 import s from './Todolistpanel.module.css'
-const Todopanel = () => {
+const Todopanel = (props) => {
     const [tasks, setTasks] = useState([])
-    const [taskText, setTaskText] = useState('')
+    // const [taskText, setTaskText] = useState('')
     
     
     let onButtonClick = () => {
         const newTask = {
-        id: Date.now(), title: taskText,completed:false
+        id: Date.now(), title: props.taskText,completed:false
     }
         setTasks([...tasks, newTask])
-        setTaskText('')
+        props.setTaskText('')
     } 
 
     let onButtonDelClick = (task )=> {
@@ -19,7 +19,7 @@ const Todopanel = () => {
     }
 
     let onTextChange = (event) => {
-        setTaskText(event.target.value)
+        props.setTaskText(event.target.value)
 
     }
     let onFlagChange = (event,task)=>{
@@ -50,7 +50,7 @@ const Todopanel = () => {
                 </div>
                 <div>
                     <input placeholder={'Задачи'}
-                        onChange={onTextChange} value={taskText}></input>
+                        onChange={onTextChange} value={props.taskText}></input>
                 </div>
                 <div>
                     <button onClick={onButtonClick}>Add</button>
