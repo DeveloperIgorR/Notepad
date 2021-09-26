@@ -9,6 +9,7 @@ import SinglePostPage from './components/SinglePostPage/SinglePostPage'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from '../src/store/reducers'
+import TodoListContainer from './components/Todolistpanel/TodoListContainer'
 
 const store = createStore(rootReducer)
 
@@ -24,7 +25,7 @@ const App = () => {
             <Route path={'/posts/:id'} render={() => <SinglePostPage />} />
           </div>
           <div className='wrapper-components'>
-            <Route path='/Todolistpanel' render={() => <Todopanel />} />
+            <Route path='/Todolistpanel' render={() => <TodoListContainer />} />
             <Route path='/Users' render={() => <Users />} />
           </div>
         </div>
