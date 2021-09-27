@@ -1,7 +1,9 @@
 import { TASK_TEXT } from "./actions"
+import { TASKS } from "./actions"
 
 const initialState = {
-    taskText: ''
+    taskText: '',
+    tasks: []
 }
 
 export const taskReducer = (state = initialState,action) => {
@@ -11,7 +13,14 @@ switch(action.type){
             ...state,
             taskText: action.payload
         }
-}
+    case TASKS:
+        return {
+            ...state,
+                        
+            tasks: [...state.tasks,action.payload]
+        }
+       
+}   
 
     return state
 }

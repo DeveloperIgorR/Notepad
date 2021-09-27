@@ -1,7 +1,7 @@
 import { useState } from "react"
 import s from './Todolistpanel.module.css'
 const Todopanel = (props) => {
-    const [tasks, setTasks] = useState([])
+    // const [tasks, setTasks] = useState([])
     // const [taskText, setTaskText] = useState('')
     
     
@@ -9,28 +9,31 @@ const Todopanel = (props) => {
         const newTask = {
         id: Date.now(), title: props.taskText,completed:false
     }
-        setTasks([...tasks, newTask])
+        console.log(newTask)
+        props.setTasks(...props.tasks, newTask)
+        console.log(props.tasks)
         props.setTaskText('')
     } 
 
     let onButtonDelClick = (task )=> {
-        let filtredTasks = tasks.filter(item => item.id != task.id)
-        setTasks(filtredTasks)
+        let filtredTasks = props.tasks.filter(item => item.id != task.id)
+        console.log(task.id)
+        props.setTasks(filtredTasks)
     }
 
     let onTextChange = (event) => {
         props.setTaskText(event.target.value)
-
+        
     }
     let onFlagChange = (event,task)=>{
-        let taskChecked = tasks.map(markedtask=>
+        let taskChecked = props.tasks.map(markedtask=>
             markedtask.id===task.id
             ?{...task,completed:!task.completed}
             :markedtask
             )
-        setTasks(taskChecked)
+        props.setTasks(taskChecked)
     }
-    let toDoListTasks = tasks.map(task => <li>
+    let toDoListTasks = props.tasks.map(task => <li>
         <div>
             <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
             <input type='checkbox' checked={task.completed} onChange={event=>onFlagChange(event,task)}/>
