@@ -1,40 +1,45 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
+import { setTasks, setTaskText } from "../../store/Todo/actions"
 import s from './Todolistpanel.module.css'
 const Todopanel = (props) => {
     // const [tasks, setTasks] = useState([])
     // const [taskText, setTaskText] = useState('')
     const dispatch = useDispatch()
+    const taskText = useSelector(state => state.tasks.taskText)
+    const tasks = useSelector(state => state.tasks.tasks)
     
+
     let onButtonClick = () => {
         const newTask = {
-        id: Date.now(), title: props.taskText,completed:false
+        id: Date.now(), title:taskText, completed:false
     }
         console.log(newTask)
-        props.setTasks(...props.tasks, newTask)
+        dispatch(setTasks(...tasks, newTask))
         console.log(props.tasks)
-        props.setTaskText('')
+        dispatch(setTaskText(''))
     } 
 
     let onButtonDelClick = (task )=> {
-        let filtredTasks = props.tasks.filter(item => item.id != task.id)
+        let filtredTasks = tasks.filter(item => item.id != task.id)
         console.log(task.id)
-        props.setTasks(filtredTasks)
+        dispatch(setTasks(filtredTasks))
     }
 
-    let onTextChange = (event) => {
-        props.setTaskText(event.target.value)
+    // let onTextChange = (event) => {
+    //     props.setTaskText(event.target.value)
         
-    }
+    // }
     let onFlagChange = (event,task)=>{
-        let taskChecked = props.tasks.map(markedtask=>
+        let taskChecked = tasks.map(markedtask=>
             markedtask.id===task.id
             ?{...task,completed:!task.completed}
             :markedtask
             )
-        props.setTasks(taskChecked)
+       dispatch(setTasks(taskChecked))
     }
-    let toDoListTasks = props.tasks.map(task => <li>
+    let toDoListTasks = tasks.map(task => <li>
         <div>
             <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
             <input type='checkbox' checked={task.completed} onChange={event=>onFlagChange(event,task)}/>
@@ -54,7 +59,7 @@ const Todopanel = (props) => {
                 </div>
                 <div>
                     <input placeholder={'Задачи'}
-                        onChange={onTextChange} value={props.taskText}></input>
+                        onChange={event => dispatch(setTaskText(event.target.value))} value={props.taskText}></input>
                 </div>
                 <div>
                     <button onClick={onButtonClick}>Add</button>

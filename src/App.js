@@ -25,7 +25,7 @@ const App = () => {
             <Route path={'/posts/:id'} render={() => <SinglePostPage />} />
           </div>
           <div className='wrapper-components'>
-            <Route path='/Todolistpanel' render={() => <TodoListContainer />} />
+            <Route path='/Todolistpanel' render={() => <Todopanel />} />
             <Route path='/Users' render={() => <Users />} />
           </div>
         </div>
