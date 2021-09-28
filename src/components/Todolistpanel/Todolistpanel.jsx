@@ -1,9 +1,10 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 import s from './Todolistpanel.module.css'
 const Todopanel = (props) => {
     // const [tasks, setTasks] = useState([])
     // const [taskText, setTaskText] = useState('')
-    
+    const dispatch = useDispatch()
     
     let onButtonClick = () => {
         const newTask = {

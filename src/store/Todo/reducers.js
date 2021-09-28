@@ -15,11 +15,12 @@ switch(action.type){
         }
     case TASKS:
         return {
-            ...state,                              
+            ...state,                                
             tasks: [...state.tasks,action.payload]
         }
-       
+    default:
+        return state
 }   
 
-    return state
+    
 }
