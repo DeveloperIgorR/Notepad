@@ -6,16 +6,10 @@ import Users from './components/Users/Users'
 import Navbar from './components/Navbar/Navbar'
 import PostPage from './components/PostPage/PostPage'
 import SinglePostPage from './components/SinglePostPage/SinglePostPage'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from '../src/store/reducers'
-import TodoListContainer from './components/Todolistpanel/TodoListContainer'
-
-const store = createStore(rootReducer)
 
 const App = () => {
-  return (
-    <Provider store={store}>
+  return (    
       <BrowserRouter>
         <div className='wrapper' >
           <Header />
@@ -29,9 +23,7 @@ const App = () => {
             <Route path='/Users' render={() => <Users />} />
           </div>
         </div>
-      </BrowserRouter>
-    </Provider>
-
+      </BrowserRouter>    
   )
 }
 

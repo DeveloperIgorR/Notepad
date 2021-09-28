@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { setTasks, setTaskText } from "../../store/Todo/actions"
 import s from './Todolistpanel.module.css'
+
 const Todopanel = (props) => {
     // const [tasks, setTasks] = useState([])
     // const [taskText, setTaskText] = useState('')
@@ -17,7 +18,7 @@ const Todopanel = (props) => {
     }
         console.log(newTask)
         dispatch(setTasks(...tasks, newTask))
-        console.log(props.tasks)
+        console.log(tasks)
         dispatch(setTaskText(''))
     } 
 
@@ -26,12 +27,8 @@ const Todopanel = (props) => {
         console.log(task.id)
         dispatch(setTasks(filtredTasks))
     }
-
-    // let onTextChange = (event) => {
-    //     props.setTaskText(event.target.value)
-        
-    // }
-    let onFlagChange = (event,task)=>{
+    
+    let onFlagChange = (task)=>{
         let taskChecked = tasks.map(markedtask=>
             markedtask.id===task.id
             ?{...task,completed:!task.completed}
@@ -42,7 +39,7 @@ const Todopanel = (props) => {
     let toDoListTasks = tasks.map(task => <li>
         <div>
             <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
-            <input type='checkbox' checked={task.completed} onChange={event=>onFlagChange(event,task)}/>
+            <input type='checkbox' checked={task.completed} onChange={()=>onFlagChange(task)}/>
             <button onClick={()=>onButtonDelClick(task)}>Delete Task</button>
         </div>
     </li>)
