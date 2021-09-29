@@ -22,6 +22,14 @@ const Todopanel = (props) => {
         dispatch(setTaskText(''))
     } 
 
+    let toDoListTasks = tasks.map(task => <li>
+        <div>
+            <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
+            <input type='checkbox' checked={task.completed} onChange={()=>onFlagChange(task)}/>
+            <button onClick={()=>onButtonDelClick(task)}>Delete Task</button>
+        </div>
+    </li>)
+
     let onButtonDelClick = (task )=> {
         let filtredTasks = tasks.filter(item => item.id != task.id)
         console.log(task.id)
@@ -36,13 +44,7 @@ const Todopanel = (props) => {
             )
        dispatch(setTasks(taskChecked))
     }
-    let toDoListTasks = tasks.map(task => <li>
-        <div>
-            <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
-            <input type='checkbox' checked={task.completed} onChange={()=>onFlagChange(task)}/>
-            <button onClick={()=>onButtonDelClick(task)}>Delete Task</button>
-        </div>
-    </li>)
+    
     
     return (
         <div>
