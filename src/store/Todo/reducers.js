@@ -16,7 +16,7 @@ switch(action.type){
     case TASKS:
         return {
             ...state,                                
-            tasks: [...state.tasks,action.payload]
+            tasks: [...state.tasks, action.payload]
         }
     default:
         return state

@@ -15,9 +15,9 @@ const Todopanel = (props) => {
     let onButtonClick = () => {
         const newTask = {
         id: Date.now(), title:taskText, completed:false
-    }
+        }
         console.log(newTask)
-        dispatch(setTasks(...tasks, newTask))
+        dispatch(setTasks(newTask))
         console.log(tasks)
         dispatch(setTaskText(''))
     } 
@@ -56,7 +56,7 @@ const Todopanel = (props) => {
                 </div>
                 <div>
                     <input placeholder={'Задачи'}
-                        onChange={event => dispatch(setTaskText(event.target.value))} value={props.taskText}></input>
+                        onChange={event => dispatch(setTaskText(event.target.value))} value={taskText}></input>
                 </div>
                 <div>
                     <button onClick={onButtonClick}>Add</button>
