@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import { delTask, setTasks, setTaskText } from "../../store/Todo/actions"
 import s from './Todolistpanel.module.css'
 
-const Todopanel = (props) => {
+const Todopanel = () => {
     // const [tasks, setTasks] = useState([])
     // const [taskText, setTaskText] = useState('')
     const dispatch = useDispatch()
@@ -25,8 +25,8 @@ const Todopanel = (props) => {
     let toDoListTasks = tasks.map(task => <li>
         <div>
             <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
-            <input type='checkbox' checked={task.completed} onChange={()=>onFlagChange(task)}/>
-            <button onClick={event =>dispatch(delTask(event.target.id)) }>Delete Task</button>
+            <input type='checkbox' checked={task.completed} onChange={()=>dispatch(onFlagChange(task.id))}/>
+            <button onClick={() =>dispatch(delTask(task.id)) }>Delete Task</button>
             
         </div>
     </li>)
@@ -37,14 +37,14 @@ const Todopanel = (props) => {
     //     dispatch(setTasks(filtredTasks))
     // }
     
-    let onFlagChange = (task)=>{
-        let taskChecked = tasks.map(markedtask=>
-            markedtask.id===task.id
-            ?{...task,completed:!task.completed}
-            :markedtask
-            )
-       dispatch(setTasks(taskChecked))
-    }
+    // let onFlagChange = (task)=>{
+    //     let taskChecked = tasks.map(markedtask=>
+    //         markedtask.id===task.id
+    //         ?{...task,completed:!task.completed}
+    //         :markedtask
+    //         )
+    //    dispatch(setTasks(taskChecked))
+    // }
     
     
     return (
