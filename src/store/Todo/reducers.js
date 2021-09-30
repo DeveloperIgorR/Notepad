@@ -26,7 +26,11 @@ switch(action.type){
     case TASK_COMPLITED:
         return{
             ...state,
-            
+            tasks: state.tasks.map(markedTask => 
+                markedTask.id === action.payload
+                ? {...markedTask,completed : true}
+                : markedTask
+                )
         }        
     default:
         return state
