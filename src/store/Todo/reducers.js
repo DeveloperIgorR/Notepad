@@ -1,4 +1,4 @@
-import { TASK_ID, TASK_TEXT } from "./actions"
+import { TASK_COMPLITED, TASK_ID, TASK_TEXT } from "./actions"
 import { TASKS } from "./actions"
 
 const initialState = {
@@ -22,7 +22,12 @@ switch(action.type){
         return{
             ...state,
             tasks: state.tasks.filter(filtredTask => filtredTask.id != action.payload )
-        }    
+        }
+    case TASK_COMPLITED:
+        return{
+            ...state,
+            
+        }        
     default:
         return state
 }   

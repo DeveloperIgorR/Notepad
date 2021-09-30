@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { delTask, setTasks, setTaskText } from "../../store/Todo/actions"
+import { delTask, onFlagChange, setTasks, setTaskText } from "../../store/Todo/actions"
 import s from './Todolistpanel.module.css'
 
 const Todopanel = () => {
