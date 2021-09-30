@@ -1,4 +1,4 @@
-import { TASK_TEXT } from "./actions"
+import { TASK_ID, TASK_TEXT } from "./actions"
 import { TASKS } from "./actions"
 
 const initialState = {
@@ -18,6 +18,11 @@ switch(action.type){
             ...state,                                
             tasks: [...state.tasks, action.payload]
         }
+    case TASK_ID:
+        return{
+            ...state,
+            tasks: state.tasks.filter(filtredTask => filtredTask.id != action.payload )
+        }    
     default:
         return state
 }   
