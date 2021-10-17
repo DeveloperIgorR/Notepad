@@ -18,7 +18,7 @@ switch(action.type){
             ...state,                                
             tasks: [...state.tasks, action.payload]
         }
-    case GET_ALL_TASKS:
+    case GET_ALL_TASKS:    
         return {
             ...state,                                
             tasks: [...state.tasks, ...action.payload]
