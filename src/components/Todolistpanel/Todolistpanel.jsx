@@ -1,17 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { delTask, onFlagChange, setTasks, setTaskText } from "../../store/Todo/actions"
+import { fetchAllTasks } from "../../store/Todo/async.actions"
 import { instance } from "./instance"
 import s from './Todolistpanel.module.css'
 
 const Todopanel = () => {
-    // const [tasks, setTasks] = useState([])
-    // const [taskText, setTaskText] = useState('')
+    
     const dispatch = useDispatch()
     const taskText = useSelector(state => state.tasks.taskText)
     const tasks = useSelector(state => state.tasks.tasks)
-    
+
+    useEffect(() => {
+        fetchAllTasks()   
+    },[])    
 
     async function onButtonClick (){
         const newTask = {
@@ -19,7 +22,7 @@ const Todopanel = () => {
         }
         try {
             const response = await instance.post(`todos/create`,newTask)
-            dispatch(setTasks(response)) 
+            dispatch(setTasks(response.data)) 
         }
         catch (e) {
             console.log(e)

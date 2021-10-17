@@ -1,4 +1,4 @@
-import { TASK_COMPLITED, TASK_ID, TASK_TEXT } from "./actions"
+import { GET_ALL_TASKS, TASK_COMPLITED, TASK_ID, TASK_TEXT } from "./actions"
 import { TASKS } from "./actions"
 
 const initialState = {
@@ -17,6 +17,11 @@ switch(action.type){
         return {
             ...state,                                
             tasks: [...state.tasks, action.payload]
+        }
+    case GET_ALL_TASKS:
+        return {
+            ...state,                                
+            tasks: [...state.tasks, ...action.payload]
         }
     case TASK_ID:
         return{
