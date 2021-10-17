@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { delTask, onFlagChange, setTasks, setTaskText } from "../../store/Todo/actions"
+import { instance } from "./instance"
 import s from './Todolistpanel.module.css'
 
 const Todopanel = () => {
@@ -12,13 +13,19 @@ const Todopanel = () => {
     const tasks = useSelector(state => state.tasks.tasks)
     
 
-    let onButtonClick = () => {
+    async function onButtonClick (){
         const newTask = {
-        id: Date.now(), title:taskText, completed:false
+         title:taskText, completed:false
         }
-        console.log(newTask)
-        dispatch(setTasks(newTask))
-        console.log(tasks)
+        try {
+            const response = await instance.post(`todos/create`,newTask)
+            dispatch(setTasks(response)) 
+        }
+        catch (e) {
+            console.log(e)
+        }
+                
+              
         dispatch(setTaskText(''))
     } 
 
@@ -29,23 +36,7 @@ const Todopanel = () => {
             <button onClick={() =>dispatch(delTask(task.id)) }>Delete Task</button>
             
         </div>
-    </li>)
-       
-    // let onButtonDelClick = (task )=> {
-    //     let filtredTasks = tasks.filter(item => item.id != task.id)
-    //     console.log(task.id)
-    //     dispatch(setTasks(filtredTasks))
-    // }
-    
-    // let onFlagChange = (task)=>{
-    //     let taskChecked = tasks.map(markedtask=>
-    //         markedtask.id===task.id
-    //         ?{...task,completed:!task.completed}
-    //         :markedtask
-    //         )
-    //    dispatch(setTasks(taskChecked))
-    // }
-    
+    </li>)  
     
     return (
         <div>
@@ -62,7 +53,7 @@ const Todopanel = () => {
                         onChange={event => dispatch(setTaskText(event.target.value))} value={taskText}></input>
                 </div>
                 <div>
-                    <button onClick={onButtonClick}>Add</button>
+                    <button onClick={() => onButtonClick()}>Add</button>
                 </div>
             </div>
         </div>
