@@ -26,7 +26,7 @@ const Todopanel = () => {
     let toDoListTasks = tasks.map(task => <li>
         <div>
             <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
-            <input type='checkbox' checked={task.completed} onChange={()=>dispatch(onCheckBox(task._id))}/>
+            <input type='checkbox' checked={task.completed} onChange={()=>dispatch(onCheckBox(task))}/>
             <button onClick={() =>dispatch(delMarkedTask(task._id)) }>Delete Task</button>
             
         </div>

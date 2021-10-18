@@ -20,9 +20,9 @@ export const delTask = id => ({
     payload: id
 })
 
-export const onFlagChange = id => ({
+export const onFlagChange = (id, task) => ({
     type: TASK_COMPLITED,
-    payload: id
+    payload: id, task
 })
 
 export const getAllTasks = tasks => ({

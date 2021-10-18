@@ -22,9 +22,9 @@ export const delMarkedTask = (id) => {
         dispatch(delTask(response.data._id))        
     }
 }
-export const onCheckBox = (id) => {
+export const onCheckBox = (task) => {
     return  async(dispatch) => {      
-        const response = await instance.put(`/todos/update/${id}`)
-        dispatch(onFlagChange(response.data._id))        
+        const response = await instance.put(`/todos/update/${task._id}`,task)
+        dispatch(onFlagChange(response.data))        
     }
 }
