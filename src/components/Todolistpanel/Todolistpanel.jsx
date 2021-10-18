@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { delTask, onFlagChange, setTasks, setTaskText } from "../../store/Todo/actions"
-import { fetchAllTasks, setNewTask } from "../../store/Todo/async.actions"
+import { setTaskText } from "../../store/Todo/actions"
+import { delMarkedTask, fetchAllTasks, onCheckBox, setNewTask } from "../../store/Todo/async.actions"
 import s from './Todolistpanel.module.css'
 
 const Todopanel = () => {
@@ -26,8 +26,8 @@ const Todopanel = () => {
     let toDoListTasks = tasks.map(task => <li>
         <div>
             <span className={task.completed==true?s.checked:s.unchecked}>{task.title}</span>
-            <input type='checkbox' checked={task.completed} onChange={()=>dispatch(onFlagChange(task.id))}/>
-            <button onClick={() =>dispatch(delTask(task.id)) }>Delete Task</button>
+            <input type='checkbox' checked={task.completed} onChange={()=>dispatch(onCheckBox(task._id))}/>
+            <button onClick={() =>dispatch(delMarkedTask(task._id)) }>Delete Task</button>
             
         </div>
     </li>)  

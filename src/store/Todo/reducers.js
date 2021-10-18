@@ -26,13 +26,13 @@ switch(action.type){
     case TASK_ID:
         return{
             ...state,
-            tasks: state.tasks.filter(filtredTask => filtredTask.id != action.payload )
+            tasks: state.tasks.filter(filtredTask => filtredTask._id != action.payload )
         }
     case TASK_COMPLITED:
         return{
             ...state,
             tasks: state.tasks.map(markedTask => 
-                markedTask.id === action.payload
+                markedTask._id === action.payload
                 ? {...markedTask,completed : true}
                 : markedTask
                 )
