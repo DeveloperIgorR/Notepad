@@ -33,7 +33,7 @@ switch(action.type){
             ...state,
             tasks: state.tasks.map(markedTask => 
                 markedTask._id === action.payload._id
-                ? {...markedTask,completed : true}
+                ? {...markedTask,completed : action.payload.completed}
                 : markedTask
                 )
         }        
